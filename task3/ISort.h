@@ -9,6 +9,8 @@ protected:
 public:
 	int getPermutations() const;
 	int getCompares() const;
+
+	virtual ~ISort() = default;
 };
 
 class bubble : public ISort {

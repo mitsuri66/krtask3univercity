@@ -20,7 +20,7 @@ bool firstTest() {
 				if (unsort[i][j] != sorted[i][j])
 					result = false;
 
-	if (bubSort.getCompares() != 9 || bubSort.getPermutations() != 3) {
+	if (bubSort.getCompares() != 8 || bubSort.getPermutations() != 6) {
 		result = false;
 	}
 
@@ -28,7 +28,7 @@ bool firstTest() {
 		std::cout << "Тест провален." << std::endl;
 		std::cout << "Ожидаемый результат:" << std::endl;
 		sorted.showArray();
-		std::cout << "Кол-во сравнений: " << 9 << "\nКол-во перестановок: " << 3 << std::endl;
+		std::cout << "Кол-во сравнений: " << 8 << "\nКол-во перестановок: " << 6 << std::endl;
 		std::cout << "\nПолученный результат:" << std::endl;
 		unsort.showArray();
 		std::cout << "Кол-во сравнений: " << bubSort.getCompares() << "\nКол-во перестановок: " << bubSort.getPermutations() << std::endl;
@@ -52,7 +52,7 @@ bool secondTest() {
 				if (unsort[i][j] != sorted[i][j])
 					result = false;
 
-	if (selSort.getCompares() != 9 || selSort.getPermutations() != 3) {
+	if (selSort.getCompares() != 9 || selSort.getPermutations() != 6) {
 		result = false;
 	}
 
@@ -60,7 +60,7 @@ bool secondTest() {
 		std::cout << "Тест провален." << std::endl;
 		std::cout << "Ожидаемый результат:" << std::endl;
 		sorted.showArray();
-		std::cout << "Кол-во сравнений: " << 9 << "\nКол-во перестановок: " << 3 << std::endl;
+		std::cout << "Кол-во сравнений: " << 9 << "\nКол-во перестановок: " << 6 << std::endl;
 		std::cout << "\nПолученный результат:" << std::endl;
 		unsort.showArray();
 		std::cout << "Кол-во сравнений: " << selSort.getCompares() << "\nКол-во перестановок: " << selSort.getPermutations() << std::endl;
@@ -84,7 +84,7 @@ bool thirdTest() {
 				if (unsort[i][j] != sorted[i][j])
 					result = false;
 
-	if (insSort.getCompares() != 3 || insSort.getPermutations() != 5) {
+	if (insSort.getCompares() != 6 || insSort.getPermutations() != 3) {
 		result = false;
 	}
 
@@ -92,7 +92,7 @@ bool thirdTest() {
 		std::cout << "Тест провален." << std::endl;
 		std::cout << "Ожидаемый результат:" << std::endl;
 		sorted.showArray();
-		std::cout << "Кол-во сравнений: " << 3 << "\nКол-во перестановок: " << 5 << std::endl;
+		std::cout << "Кол-во сравнений: " << 6 << "\nКол-во перестановок: " << 3 << std::endl;
 		std::cout << "\nПолученный результат:" << std::endl;
 		unsort.showArray();
 		std::cout << "Кол-во сравнений: " << insSort.getCompares() << "\nКол-во перестановок: " << insSort.getPermutations() << std::endl;
@@ -116,7 +116,7 @@ bool fourthTest() {
 				if (unsort[i][j] != sorted[i][j])
 					result = false;
 
-	if (shellSort.getCompares() != 3 || shellSort.getPermutations() != 3) {
+	if (shellSort.getCompares() != 6 || shellSort.getPermutations() != 3) {
 		result = false;
 	}
 
@@ -124,7 +124,7 @@ bool fourthTest() {
 		std::cout << "Тест провален." << std::endl;
 		std::cout << "Ожидаемый результат:" << std::endl;
 		sorted.showArray();
-		std::cout << "Кол-во сравнений: " << 3 << "\nКол-во перестановок: " << 3 << std::endl;
+		std::cout << "Кол-во сравнений: " << 6 << "\nКол-во перестановок: " << 3 << std::endl;
 		std::cout << "\nПолученный результат:" << std::endl;
 		unsort.showArray();
 		std::cout << "Кол-во сравнений: " << shellSort.getCompares() << "\nКол-во перестановок: " << shellSort.getPermutations() << std::endl;

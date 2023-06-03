@@ -44,6 +44,23 @@ int getRandomInt() {
 	return dist(rng);
 }
 
+bool getBool() {
+	int input = 0;
+
+	while (true) {
+		if (!(std::cin >> input) || (input != 0 && input != 1)) {
+			std::cin.clear();
+			while (std::cin.get() != '\n');
+			std::cout << "\nÎרטבךא גגמהא, ןמגעמנטעו: ";
+		}
+		else {
+			break;
+		}
+	}
+	while (std::cin.get() != '\n');
+	return static_cast<bool>(input);
+}
+
 bool checkFilepath(const std::string filepath) {
 	std::ifstream input(filepath);
 

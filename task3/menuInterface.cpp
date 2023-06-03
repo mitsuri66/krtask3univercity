@@ -34,6 +34,8 @@ void showMainMenu() {
 }
 
 void allSorts(matrix& matr) {
+	bool save{};
+
 	std::cout << "Исходная матрица:" << std::endl;
 	matr.showArray();
 	std::cout << "=================" << std::endl;
@@ -95,6 +97,14 @@ void allSorts(matrix& matr) {
 	std::cout << "| Быстрая сортировка       |       " << std::setw(10) << quickCompares
 		<< " |            " << std::setw(10) << quickPermutations << "      |  " << std::endl;
 	std::cout << "-----------------------------\n" << std::endl;
+
+	std::cout << "Хотите сохранить результат в файл?" << std::endl;
+	std::cout << "1 - Да\n0 - Нет" << std::endl;
+	save = getBool();
+	if (save) {
+		matr.saveResult(bubbleCompares, bubblePermutations, selectionCompares, selectionPermutations, 
+			insertionCompares, insertionPermutations, shellCompares, shellPermutations, quickCompares, quickPermutations);
+	}
 }
 
 void startProgram() {
@@ -131,8 +141,15 @@ void startProgram() {
 			matr.setRowsColumns(rows, columns);
 			matr.fillingArrayFromConsole();
 
-			allSorts(matr);
+			std::cout << "Хотите сохранить матрицу в файл?" << std::endl;
+			std::cout << "1 - Да\n0 - Нет" << std::endl;
+			save = getBool();
+			if (save) {
+				matr.saveMatrix();
+			}
 
+			allSorts(matr);
+			matr.clear();
 			break;
 		case fstart:
 			std::cout << "\nВы выбрали заполнение матрицы из файла.\n" << std::endl;
@@ -144,6 +161,7 @@ void startProgram() {
 			matr.fillingArrayFromFile(filepath);
 
 			allSorts(matr);
+			matr.clear();
 			break;
 		case ranstart:
 			std::cout << "\nВы выбрали заполнить матрицу случайными числами.\n" << std::endl;
@@ -166,7 +184,14 @@ void startProgram() {
 			matr.setRowsColumns(rows, columns);
 			matr.fillingArrayWithRandom();
 
+			std::cout << "Хотите сохранить матрицу в файл?" << std::endl;
+			std::cout << "1 - Да\n0 - Нет" << std::endl;
+			save = getBool();
+			if (save) {
+				matr.saveMatrix();
+			}
 			allSorts(matr);
+			matr.clear();
 			break;
 		case test:
 			std::cout << "\nВы выбрали провести модульные тесты." << std::endl;

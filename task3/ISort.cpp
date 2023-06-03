@@ -12,17 +12,22 @@ void bubble::Sort(matrix& myMatrix) {
 	int i{}, j{}, k{};
 	int temp{};
 	for (i = 0; i < myMatrix.getRows(); i++) {
-		for (j = 0; j < myMatrix.getColumns() - 1; j++) {
-			for (k = 1; k < myMatrix.getColumns() - j; k++) {
-				if (myMatrix.getSumOfElement(i, k - 1) < myMatrix.getSumOfElement(i, k)) {
-					temp = myMatrix.getElement(i, k - 1);
-					myMatrix.setElement(i, k - 1, myMatrix.getElement(i, k));
-					myMatrix.setElement(i, k, temp);
-					permutations++;
+		bool flag = true;
+		while (flag) {
+			flag = false;
+			for (k = 0; k < myMatrix.getColumns() - j - 1; k++) {
+				if (myMatrix.getSumOfElement(i, k) < myMatrix.getSumOfElement(i, k + 1)) {
+					temp = myMatrix.getElement(i, k);
+					myMatrix.setElement(i, k, myMatrix.getElement(i, k + 1));
+					myMatrix.setElement(i, k + 1, temp);
+					permutations += 2;
+					flag = true;
 				}
 				compares++;
 			}
+			j++;
 		}
+		j = 0;
 	}
 }
 
@@ -43,7 +48,7 @@ void selection::Sort(matrix& myMatrix) {
 				temp = myMatrix.getElement(i, j);
 				myMatrix.setElement(i, j, myMatrix.getElement(i, minIndex));
 				myMatrix.setElement(i, minIndex, temp);
-				permutations++;
+				permutations += 2;
 			}
 		}
 	}
@@ -58,14 +63,14 @@ void insertion::Sort(matrix& myMatrix) {
 			key = myMatrix.getSumOfElement(i, j);
 			temp = myMatrix.getElement(i, j);
 			k = j - 1;
-			if (!(myMatrix.getSumOfElement(i, k) == myMatrix.getSumOfElement(i, j))) {
+			compares++;
+			if (myMatrix.getSumOfElement(i, k) != myMatrix.getSumOfElement(i, j)) {
 				while (k >= 0 && myMatrix.getSumOfElement(i, k) < key) {
 					myMatrix.setElement(i, k + 1, myMatrix.getElement(i, k));
 					k--;
-					compares++;
+					permutations++;
 				}
 				myMatrix.setElement(i, k + 1, temp);
-				permutations++;
 			}
 		}
 	}
@@ -78,10 +83,10 @@ void shell::Sort(matrix& myMatrix) {
 	for (i = 0; i < myMatrix.getRows(); i++) {
 		for (step = myMatrix.getColumns() / 2; step > 0; step /= 2) {
 			for (j = step; j < myMatrix.getColumns(); j++) {
+				compares++;
 				temp = myMatrix.getElement(i, j);
 				for (k = j; k >= step && myMatrix.getSumOfElement(i, k - step) < myMatrix.getSumOfElement(i, j); k -= step) {
 					myMatrix.setElement(i, k, myMatrix.getElement(i, k - step));
-					compares++;
 					permutations++;
 				}
 				myMatrix.setElement(i, k, temp);
@@ -98,12 +103,12 @@ void quick::sorting(matrix& myMatrix, const int left, const int right, const int
 
 	while (k <= j) {
 		while (myMatrix.getSumOfElement(i, k) > pivot) {
-			k++;
 			compares++;
+			k++;
 		}
 		while (myMatrix.getSumOfElement(i, j) < pivot) {
-			j--;
 			compares++;
+			j--;
 		}
 		if (k <= j) {
 			if (!(myMatrix.getSumOfElement(i, k) == myMatrix.getSumOfElement(i, j))) {

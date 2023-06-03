@@ -20,6 +20,10 @@ public:
 	void fillingArrayFromFile(std::string);
 	void fillingArrayWithRandom();
 	void showArray() const;
+	void saveMatrix() const;
+	void saveResult(const int bc, const int bp, const int sc, const int sp, 
+		const int ic, const int ip, const int Sc, const int Sp, const int qc, const int qp) const;
 	void operator = (const matrix& other);
 	std::vector<int>& operator[](int index);
+	void clear();
 };
